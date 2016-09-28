@@ -30,7 +30,7 @@ RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update
 RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk \
   --all \
   --no-ui \
-  --filter build-tools-21.0.0,\
+  --filter 'build-tools-21.0.0,\
            build-tools-21.0.1,\
            build-tools-21.0.2,\
            build-tools-21.1.0,\
@@ -60,7 +60,7 @@ RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update
            sys-img-arm64-v8a-android-24,\
            sys-img-armeabi-v7a-android-24,\
            sys-img-x86_64-android-24,\
-           sys-img-x86-android-24"
+           sys-img-x86-android-24'"
 # RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui"
 
 # Setup environment
