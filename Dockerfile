@@ -27,7 +27,7 @@ RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.c
   chown -R root.root android-sdk
  
 RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui --filter platform-tools,tools"
-RUN /opt/tools/android-accept-licenses.sh "android-sdk/tools/android update sdk \
+RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk \
   --all \
   --no-ui \
   --filter build-tools-21.0.0,\
