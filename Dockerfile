@@ -49,17 +49,17 @@ RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update
            android-22,\
            android-23,\
            android-24,\
-           addon-google_apis-google-24, \
-           addon-google_apis-google-23, \
-           addon-google_apis-google-22, \
-           addon-google_apis-google-21, \
+           addon-google_apis-google-24,\
+           addon-google_apis-google-23,\
+           addon-google_apis-google-22,\
+           addon-google_apis-google-21,\
            extra-android-support,\
            extra-android-m2repository,\
            extra-google-m2repository,\
            extra-google-google_play_services,\
-           sys-img-arm64-v8a-android-24, \
-           sys-img-armeabi-v7a-android-24, \
-           sys-img-x86_64-android-24, \
+           sys-img-arm64-v8a-android-24,\
+           sys-img-armeabi-v7a-android-24,\
+           sys-img-x86_64-android-24,\
            sys-img-x86-android-24"
 # RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui"
 
