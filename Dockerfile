@@ -26,9 +26,9 @@ RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.c
   mv android-sdk-linux android-sdk && \
   chown -R root.root android-sdk
  
-RUN /opt/tools/android-accept-licenses.sh "android-sdk/tools/android update sdk --all --no-ui --filter platform-tools,tools" && \
+RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui --filter platform-tools,tools" && \
   #/opt/tools/android-accept-licenses.sh "android-sdk/tools/android update sdk --all --no-ui --filter platform-tools,tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2,build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,build-tools-22,build-tools-22.0.1,build-tools-23.0.0,build-tools-23.0.3,build-tools-24,build-tools-24.0.1,build-tools-24.0.2,android-21,android-22,android-23,android-24,addon-google_apis_x86-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,sys-img-armeabi-v7a-android-24"
-RUN /opt/tools/android-accept-licenses.sh "android-sdk/tools/android update sdk --all --no-ui"
+RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui"
 
 # Setup environment
 ENV ANDROID_HOME /opt/android-sdk
