@@ -58,6 +58,6 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 
 # google apis
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
 
 RUN apt-get clean
