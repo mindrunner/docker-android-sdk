@@ -52,3 +52,4 @@ RUN apt-get clean
 # GO to workspace
 RUN mkdir -p /opt/workspace
 WORKDIR /opt/workspace
+VOLUME ["/opt/android-sdk"]
