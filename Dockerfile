@@ -87,3 +87,5 @@ RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-
 RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-21 | grep 'package installed'
 
 RUN apt-get clean
+
+VOLUME ["/opt/android-sdk-linux"]
