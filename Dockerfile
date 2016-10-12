@@ -61,3 +61,5 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
 
 RUN apt-get clean
+
+VOLUME ["/opt/android-sdk-linux"]
