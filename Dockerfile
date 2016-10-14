@@ -23,14 +23,13 @@ ENV PATH ${PATH}:/opt/tools
 RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz && \
   tar xzf android-sdk.tgz && \
   rm -f android-sdk.tgz && \
-  mv android-sdk-linux android-sdk && \
   chown -R root.root android-sdk && \
-  /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui --filter platform-tools,tools" && \
-  /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui --filter build-tools-21.0.0,build-tools-21.0.1,build-tools-21.0.2,build-tools-21.1.0,build-tools-21.1.1,build-tools-21.1.2,build-tools-22.0.0,build-tools-22.0.1,build-tools-23.0.0,build-tools-23.0.1,build-tools-23.0.2,build-tools-23.0.3,build-tools-24.0.0,build-tools-24.0.1,build-tools-24.0.2,android-21,android-22,android-23,android-24,addon-google_apis-google-24,addon-google_apis-google-23,addon-google_apis-google-22,addon-google_apis-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,sys-img-arm64-v8a-android-24,sys-img-armeabi-v7a-android-24,sys-img-x86_64-android-24,sys-img-x86-android-24"
-# RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk/tools/android update sdk --all --no-ui"
+  /opt/tools/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk --all --no-ui --filter platform-tools,tools" && \
+  /opt/tools/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk --all --no-ui --filter build-tools-21.0.0,build-tools-21.0.1,build-tools-21.0.2,build-tools-21.1.0,build-tools-21.1.1,build-tools-21.1.2,build-tools-22.0.0,build-tools-22.0.1,build-tools-23.0.0,build-tools-23.0.1,build-tools-23.0.2,build-tools-23.0.3,build-tools-24.0.0,build-tools-24.0.1,build-tools-24.0.2,android-21,android-22,android-23,android-24,addon-google_apis-google-24,addon-google_apis-google-23,addon-google_apis-google-22,addon-google_apis-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,sys-img-arm64-v8a-android-24,sys-img-armeabi-v7a-android-24,sys-img-x86_64-android-24,sys-img-x86-android-24"
+# RUN /opt/tools/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk --all --no-ui"
 
 # Setup environment
-ENV ANDROID_HOME /opt/android-sdk
+ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN which adb
@@ -49,7 +48,6 @@ RUN echo "no" | android create avd \
 # Cleaning
 RUN apt-get clean
 
-# GO to workspace
-RUN mkdir -p /opt/workspace
-WORKDIR /opt/workspace
-VOLUME ["/opt/android-sdk"]
+RUN chown -R 1000:1000 $ANDROID_HOME
+
+VOLUME ["/opt/android-sdk-linux"]
