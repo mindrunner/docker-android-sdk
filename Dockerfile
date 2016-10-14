@@ -88,6 +88,6 @@ RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-
 
 RUN apt-get clean
 
-chown -R 1000:1000 $ANDROID_HOME
+RUN chown -R 1000:1000 $ANDROID_HOME
 
 VOLUME ["/opt/android-sdk-linux"]
