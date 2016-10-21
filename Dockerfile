@@ -46,9 +46,12 @@ RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'packag
 # build tools
 # Please keep these in descending order!
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.2 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.3 | grep 'package installed'
+
 
 # Android System Images, for emulators
 # Please keep these in descending order!
+RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24 | grep 'package installed'
 
 # Extras
