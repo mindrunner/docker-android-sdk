@@ -61,11 +61,13 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 
 # google apis
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
+RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed'
+
+# Update SDK
+RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui | grep 'package installed'
 
 RUN apt-get clean
 
 RUN chown -R 1000:1000 $ANDROID_HOME
-
 
 VOLUME ["/opt/android-sdk-linux"]
