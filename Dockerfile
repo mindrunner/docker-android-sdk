@@ -26,6 +26,10 @@ RUN cd /opt && rm -f android-sdk.tgz
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
+# Copy install tools
+COPY tools /opt/tools
+
+ENV PATH ${PATH}:/opt/tools
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
 
@@ -64,7 +68,7 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 #RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed'
 
 # Update SDK
-#RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui
+RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui
 
 RUN apt-get clean
 
