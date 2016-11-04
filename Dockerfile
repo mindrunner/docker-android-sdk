@@ -53,9 +53,9 @@ RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.3 | grep
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-25 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-25 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-25 | grep 'package installed'
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-25 | grep 'package installed'
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-25 | grep 'package installed'
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-25 | grep 'package installed'
 
 RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-24 | grep 'package installed'
