@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.10
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
@@ -51,7 +51,6 @@ RUN echo y | android update sdk --no-ui --all --filter android-23 | grep 'packag
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.3 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.2 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.3 | grep 'package installed'
-
 
 # Android System Images, for emulators
 # Please keep these in descending order!
