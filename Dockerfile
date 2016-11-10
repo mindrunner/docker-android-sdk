@@ -89,7 +89,7 @@ ENV PATH ${PATH}:/opt/tools
 RUN ls -ahl /opt/
 RUN ls -ahl /opt/tools
 # Update SDK
-RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui
+RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
 
 RUN apt-get clean
 
