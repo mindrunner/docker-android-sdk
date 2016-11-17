@@ -50,6 +50,7 @@ RUN echo y | android update sdk --no-ui --all --filter android-16 | grep 'packag
 
 # build tools
 # Please keep these in descending order!
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.3 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.2 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.1 | grep 'package installed'
@@ -87,9 +88,6 @@ COPY licenses/android-sdk-license ${ANDROID_HOME}
 COPY licenses/android-sdk-preview-license ${ANDROID_HOME}
 
 ENV PATH ${PATH}:/opt/tools
-
-RUN ls -ahl /opt/
-RUN ls -ahl /opt/tools
 # Update SDK
 RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
 
