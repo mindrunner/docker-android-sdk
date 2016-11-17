@@ -128,5 +128,4 @@ RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete 
 RUN apt-get clean
 
 RUN chown -R 1000:1000 $ANDROID_HOME
-
 VOLUME ["/opt/android-sdk-linux"]
