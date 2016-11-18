@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.10
 
 MAINTAINER Lukas Elsner "open@mindrunner.de"
 
