@@ -120,8 +120,7 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 COPY tools /opt/tools
 
 #Copy accepted android licenses
-COPY licenses/android-sdk-license ${ANDROID_HOME}/licenses
-COPY licenses/android-sdk-preview-license ${ANDROID_HOME}/licenses
+COPY licenses ${ANDROID_HOME}/licenses
 
 ENV PATH ${PATH}:/opt/tools
 # Update SDK
