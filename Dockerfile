@@ -20,11 +20,18 @@ RUN apt-get install -y openjdk-8-jdk wget expect
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
 
+RUN useradd -u 1000 -M -s /bin/bash android
+RUN chown 1000 /opt
+
+
+USER android
+
+
 RUN cd /opt && wget -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz -O android-sdk.tgz
 RUN cd /opt && tar -xvzf android-sdk.tgz
 RUN cd /opt && rm -f android-sdk.tgz
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/tools
 
 
 # ------------------------------------------------------
@@ -123,11 +130,11 @@ COPY tools /opt/tools
 #Copy accepted android licenses
 COPY licenses ${ANDROID_HOME}/licenses
 
-ENV PATH ${PATH}:/opt/tools
 # Update SDK
 RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
 
+USER root
+
 RUN apt-get clean
 
-RUN chown -R 1000:1000 $ANDROID_HOME
 VOLUME ["/opt/android-sdk-linux"]
