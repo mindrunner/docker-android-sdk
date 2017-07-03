@@ -77,7 +77,7 @@ RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-andro
 RUN echo y | android update sdk --no-ui --all --filter sys-img-arm64-v8a-android-24 | grep 'package installed'
 
 RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-23 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23 | grep 'package installed'
 
 RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-22 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-22 | grep 'package installed'
