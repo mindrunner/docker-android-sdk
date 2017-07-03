@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.04
 
 # ------------------------------------------------------
 # --- Install required tools
@@ -8,7 +8,7 @@ FROM ubuntu:16.10
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
 RUN apt-get update -qq \
     && apt-get install -y openjdk-8-jdk wget expect \
-    && apt-get clean
+    && apt-gat clean
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_SDK_HOME
