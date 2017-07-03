@@ -46,6 +46,7 @@ RUN echo y | android update sdk --no-ui --all --filter android-26 | grep 'packag
 RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-23 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter android-22 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-18 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-16 | grep 'package installed'
 
@@ -86,40 +87,6 @@ RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-andro
 RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
-
-# install those?
-
-# build-tools-21.0.0
-#build-tools-21.0.1
-#build-tools-21.0.2
-#build-tools-21.1.0
-#build-tools-21.1.1
-#build-tools-21.1.2
-#build-tools-22.0.0
-#build-tools-22.0.1
-#build-tools-23.0.0
-#build-tools-23.0.1
-#build-tools-23.0.2
-#build-tools-23.0.3
-#build-tools-24.0.0
-#build-tools-24.0.1
-#build-tools-24.0.2
-#android-21
-#android-22
-#android-23
-#android-24
-#addon-google_apis-google-24
-#addon-google_apis-google-23
-#addon-google_apis-google-22
-#addon-google_apis-google-21
-#extra-android-support
-#extra-android-m2repository
-#extra-google-m2repository
-#extra-google-google_play_services
-#sys-img-arm64-v8a-android-24
-#sys-img-armeabi-v7a-android-24
-#sys-img-x86_64-android-24
-#sys-img-x86-android-24
 
 # google apis
 # Please keep these in descending order!
