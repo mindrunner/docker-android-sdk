@@ -2,15 +2,13 @@ FROM ubuntu:16.10
 
 # ------------------------------------------------------
 # --- Install required tools
-
-RUN apt-get update -qq
-
 # Dependencies to execute Android builds
 #RUN dpkg --add-architecture i386
 #RUN apt-get update -qq
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
-RUN apt-get install -y openjdk-8-jdk wget expect
-RUN apt-get clean
+RUN apt-get update -qq \
+    && apt-get install -y openjdk-8-jdk wget expect \
+    && apt-get clean
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_SDK_HOME
