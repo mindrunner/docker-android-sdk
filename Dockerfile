@@ -20,4 +20,6 @@ COPY tools /opt/tools
 
 COPY licenses /opt/licenses
 
+USER android
+
 CMD "/opt/tools/android-sdk-update.sh"
