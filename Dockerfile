@@ -70,21 +70,21 @@ RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.3
 
 # Android System Images, for emulators
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-google_apis-26
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-google_apis-25
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-google_apis-26
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-google_apis-25
 
 RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-25
 
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-24
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-24
 RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24
-RUN echo y | android update sdk --no-ui --all --filter sys-img-arm64-v8a-android-24
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-arm64-v8a-android-24
 
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23
-RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23
 
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-22
-RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-22
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-22
+#RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-22
 
 # Extras
 RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -94,7 +94,7 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 # google apis
 # Please keep these in descending order!
 RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-24
-RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
+#RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
 
 # Copy install tools
 COPY tools /opt/tools
@@ -104,6 +104,5 @@ COPY licenses ${ANDROID_SDK_HOME}/licenses
 
 # Update SDK
 RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
-
 
 VOLUME ["/opt/android-sdk-linux"]
