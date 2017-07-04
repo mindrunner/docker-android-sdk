@@ -56,7 +56,7 @@ RUN echo y | android update sdk --no-ui --all --filter android-16
 # build tools
 # Please keep these in descending order!
 RUN echo y | android update sdk --no-ui --all --filter build-tools-26.0.0
-#RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.3
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.3
 #RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
 #RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.1
 #RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
@@ -81,10 +81,10 @@ RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-andro
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-arm64-v8a-android-24
 
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23
-#RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23
+RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23
 
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-22
-#RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-22
+RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-22
 
 # Extras
 RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository
@@ -94,7 +94,6 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 # google apis
 # Please keep these in descending order!
 RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-24
-#RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23
 
 # Copy install tools
 COPY tools /opt/tools
