@@ -20,7 +20,10 @@ echo "Copying Licences"
 cp -r /opt/licenses ${ANDROID_SDK_HOME}/licenses
 
 echo "Installing packages"
-/opt/tools/android-accept-licenses.sh sdkmanager --package_file=/opt/tools/package-list.txt --verbose
+/opt/tools/android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
 
 echo "Updating SDK"
-/opt/tools/android-accept-licenses.sh sdkmanager --update --verbose
+/opt/tools/android-accept-licenses.sh "sdkmanager --update --verbose"
+
+echo "Accepting Licenses"
+/opt/tools/android-accept-licenses.sh "sdkmanager --licenses --verbose"
