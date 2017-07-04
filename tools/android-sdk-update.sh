@@ -55,6 +55,7 @@ echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-2
 echo y | android update sdk --no-ui --all --filter sys-img-arm64-v8a-android-24
 
 echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23
+echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-23
 echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-google_apis-23
 
 echo y | android update sdk --no-ui --all --filter sys-img-x86-android-22
