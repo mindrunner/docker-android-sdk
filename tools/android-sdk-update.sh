@@ -12,7 +12,7 @@ then
 	echo "SDK already bootstrapped. Skipping initial setup"
 else
     wget -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz -O android-sdk.tgz
-    tar -xvzf android-sdk.tgz
+    tar --strip-components=1 -xvzf android-sdk.tgz
 fi
 
 
