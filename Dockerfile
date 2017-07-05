@@ -14,12 +14,15 @@ RUN apt-get update -qq \
 # --- Download Android SDK tools into $ANDROID_SDK_HOME
 
 RUN useradd -u 1000 -M -s /bin/bash android
-RUN chown 1000 /opt
+
+RUN chown -R 1000 /opt/android-sdk-home
 
 COPY tools /opt/tools
 
 COPY licenses /opt/licenses
 
 USER android
+
+RUN mkdir -p /opt/android-sdk-home
 
 CMD "/opt/tools/android-sdk-update.sh"
