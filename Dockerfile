@@ -15,7 +15,7 @@ RUN apt-get update -qq \
 
 RUN useradd -u 1000 -M -s /bin/bash android
 
-RUN chown -R 1000 /opt/android-sdk-home
+RUN chown -R 1000 /opt
 
 COPY tools /opt/tools
 
