@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 
 export ANDROID_SDK_HOME=/opt/android-sdk-linux
