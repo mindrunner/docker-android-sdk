@@ -22,4 +22,6 @@ COPY licenses /opt/licenses
 
 USER android
 
-CMD "/opt/tools/android-sdk-update.sh"
+RUN "/opt/tools/android-sdk-update.sh"
+
+VOLUME ["/opt/android-sdk-linux"]
