@@ -22,6 +22,8 @@ COPY licenses /opt/licenses
 
 USER android
 
+RUN mkdir -p /opt/android-sdk-linux
+
 RUN "/opt/tools/android-sdk-update.sh"
 
 VOLUME ["/opt/android-sdk-linux"]
