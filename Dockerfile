@@ -13,12 +13,12 @@ RUN apt-get update -qq \
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_SDK_HOME
 
-RUN groupadd android && useradd -d /opt/android-sdk-home -g android android
+RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
 COPY tools /opt/tools
 
 COPY licenses /opt/licenses
 
-WORKDIR /opt/android-sdk-home
+WORKDIR /opt/android-sdk-linux
 
 CMD /opt/tools/entrypoint.sh

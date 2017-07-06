@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-chown android:android /opt/android-sdk-home
+chown android:android /opt/android-sdk-linux
 su - android -c /opt/tools/android-sdk-update.sh
