@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. /opt/android-sdk-linux/tools/bin/androidenv.sh
+mkdir -p /opt/android-sdk-linux/tools/bin/
+cp /opt/tools/android-env.sh /opt/android-sdk-linux/tools/bin/
+source /opt/android-sdk-linux/tools/bin/androidenv.sh
 
 cd ${ANDROID_SDK_HOME}
 
