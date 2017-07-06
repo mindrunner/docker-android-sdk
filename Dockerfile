@@ -21,4 +21,4 @@ COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-home
 
-CMD "chown android:android /opt/android-sdk-home && su - android -c /opt/tools/android-sdk-update.sh"
+CMD /opt/tools/entrypoint.sh
