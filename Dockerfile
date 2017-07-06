@@ -25,4 +25,6 @@ USER android
 
 RUN mkdir -p /opt/android-sdk-home
 
+VOLUME /opt/android-sdk-home
+
 CMD "/opt/tools/android-sdk-update.sh"
