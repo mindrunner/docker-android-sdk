@@ -18,8 +18,8 @@ fi
 echo "Copying Licences"
 cp -r /opt/licenses ${ANDROID_SDK_HOME}/licenses
 
-echo "Copying Licences"
-cp -r /opt/tools/*.sh ${ANDROID_SDK_HOME}/tools/bin
+echo "Copying Tools"
+cp /opt/tools/*.sh ${ANDROID_SDK_HOME}/tools/bin
 
 echo "Installing packages"
 android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
