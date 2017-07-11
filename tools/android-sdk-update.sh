@@ -4,7 +4,7 @@ mkdir -p /opt/android-sdk-linux/tools/bin/
 cp /opt/tools/android-env.sh /opt/android-sdk-linux/tools/bin/
 source /opt/android-sdk-linux/tools/bin/android-env.sh
 
-cd ${ANDROID_SDK_HOME}
+cd ${ANDROID_HOME}
 
 if [ -f sdk-tools-linux.zip ]
 then
@@ -16,10 +16,10 @@ else
 fi
 
 echo "Copying Licences"
-cp -r /opt/licenses ${ANDROID_SDK_HOME}/licenses
+cp -r /opt/licenses ${ANDROID_HOME}/licenses
 
 echo "Copying Tools"
-cp /opt/tools/*.sh ${ANDROID_SDK_HOME}/tools/bin
+cp /opt/tools/*.sh ${ANDROID_HOME}/tools/bin
 
 echo "Installing packages"
 android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
