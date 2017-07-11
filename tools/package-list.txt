@@ -163,7 +163,8 @@ system-images;android-25;google_apis;x86_64
 system-images;android-26;android-tv;x86
 system-images;android-26;android-wear;x86
 system-images;android-26;google_apis;x86
-system-images;android-26;google_apis_playstore;x86sources;android-15
+system-images;android-26;google_apis_playstore;x86
+sources;android-15
 sources;android-16
 sources;android-17
 sources;android-18
