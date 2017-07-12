@@ -15,10 +15,12 @@ until [[ "${bootcomplete}" =~ "1" ]]; do
         echo "Waiting for emulator to start"
         if [[ ${failcounter} -gt ${maxfail} ]]; then
             echo "Timeout ($timeout seconds) reached; failed to start emulator"
-            while killall -9 "emulator" >/dev/null 2>&1; do
+            while pkill -9 "emulator" >/dev/null 2>&1; do
                 echo "Killing emulator proces...."
+                pgrep "emulator"
             done
             echo "Process terminated"
+            pgrep "emulator"
             exit 1
         fi
     fi
