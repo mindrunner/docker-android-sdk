@@ -23,7 +23,6 @@ extras;google;instantapps
 extras;google;m2repository
 extras;google;market_apk_expansion
 extras;google;market_licensing
-extras;google;play_billing
 extras;google;webdriver
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha2
