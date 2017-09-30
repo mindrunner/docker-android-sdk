@@ -15,11 +15,14 @@ else
   unzip sdk-tools-linux.zip
 fi
 
+echo "Make sure repositories.cfg exists"
+touch ~/.android/repositories.cfg
+
 echo "Copying Licences"
-cp -r /opt/licenses ${ANDROID_HOME}/licenses
+cp -rv /opt/licenses ${ANDROID_HOME}/licenses
 
 echo "Copying Tools"
-cp /opt/tools/*.sh ${ANDROID_HOME}/tools/bin
+cp -v /opt/tools/*.sh ${ANDROID_HOME}/tools/bin
 
 echo "Installing packages"
 android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
