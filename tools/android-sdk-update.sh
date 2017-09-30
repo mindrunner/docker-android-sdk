@@ -16,6 +16,7 @@ else
 fi
 
 echo "Make sure repositories.cfg exists"
+mkdir -p ~/.android/
 touch ~/.android/repositories.cfg
 
 echo "Copying Licences"
