@@ -6,6 +6,11 @@ source /opt/android-sdk-linux/bin/android-env.sh
 
 built_in_sdk=1
 
+
+echo $#
+
+echo $1
+
 if [ $# -ge 0 ] && [ "$1" == "lazy-dl" ]
 then
     echo "Using Lazy Download Flavour"
