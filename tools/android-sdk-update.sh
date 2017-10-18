@@ -15,7 +15,7 @@ then
     echo "Using Built-In SDK Flavour"
     built_in_sdk=1
 else
-    echo "Please use either build-in or lazy-dl as parameter"
+    echo "Please use either built-in or lazy-dl as parameter"
     exit 1
 fi
 
