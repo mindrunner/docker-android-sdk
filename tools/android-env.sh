@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export ANDROID_HOME=/opt/android-sdk-linux
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/emulator
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/bin:
 
 function print_header() {
     figlet SBB CFF FFS

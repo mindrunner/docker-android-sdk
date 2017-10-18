@@ -103,7 +103,6 @@ system-images;android-15;google_apis;x86
 system-images;android-16;default;armeabi-v7a
 system-images;android-16;default;mips
 system-images;android-16;default;x86
-system-images;android-16;google_apis;armeabi-v7a
 system-images;android-16;google_apis;x86
 system-images;android-17;default;armeabi-v7a
 system-images;android-17;default;mips

@@ -1,10 +1,11 @@
 #!/bin/bash
 
-mkdir -p /opt/android-sdk-linux/tools/bin/
-cp /opt/tools/android-env.sh /opt/android-sdk-linux/tools/bin/
-source /opt/android-sdk-linux/tools/bin/android-env.sh
+mkdir -p /opt/android-sdk-linux/bin/
+cp /opt/tools/android-env.sh /opt/android-sdk-linux/bin/
+source /opt/android-sdk-linux/bin/android-env.sh
 
 cd ${ANDROID_HOME}
+echo "Set ANDROID_HOME to ${ANDROID_HOME}"
 
 if [ -f sdk-tools-linux.zip ]
 then
@@ -23,7 +24,8 @@ echo "Copying Licences"
 cp -rv /opt/licenses ${ANDROID_HOME}/licenses
 
 echo "Copying Tools"
-cp -v /opt/tools/*.sh ${ANDROID_HOME}/tools/bin
+mkdir -p ${ANDROID_HOME}/bin
+cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 
 echo "Installing packages"
 android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
