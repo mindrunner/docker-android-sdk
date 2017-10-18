@@ -21,7 +21,7 @@ COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-linux
 
-RUN /opt/tools/entrypoint.sh built-in
+RUN /bin/bash -c /opt/tools/entrypoint.sh built-in
 
 CMD /opt/tools/entrypoint.sh built-in
 
