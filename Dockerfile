@@ -12,9 +12,6 @@ RUN apt-get update -qq \
     && apt-get install -y openjdk-8-jdk wget expect git curl unzip vim \
     && apt-get clean
 
-# ------------------------------------------------------
-# --- Download Android SDK tools into $ANDROID_SDK_HOME
-
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
 COPY tools /opt/tools
@@ -32,4 +29,3 @@ RUN /opt/tools/android-sdk-update.sh built-in
 USER root
 
 CMD /opt/tools/entrypoint.sh built-in
-
