@@ -1,21 +1,30 @@
 #!/bin/bash
 
-# Originally written by Ralf Kistner <ralf@embarkmobile.com>, but placed in the public domain
-
 set +e
 
-bootanim=""
+bootcomplete=""
 failcounter=0
-until [[ "$bootanim" =~ "stopped" ]]; do
-   bootanim=`adb -e shell getprop init.svc.bootanim 2>&1`
-   echo "$bootanim"
-   if [[ "$bootanim" =~ "not found" ]]; then
-      let "failcounter += 1"
-      if [[ $failcounter -gt 15 ]]; then
-        echo "Failed to start emulator"
-        exit 1
-      fi
-   fi
-   sleep 1
+timeout=600
+sleeptime=10
+maxfail=$((timeout / sleeptime))
+
+until [[ "${bootcomplete}" =~ "1" ]]; do
+    bootcomplete=`adb -e shell getprop dev.bootcomplete 2>&1 &`
+    if [[ "${bootcomplete}" =~ "" ]]; then
+        ((failcounter += 1))
+        echo "Waiting for emulator to start"
+        if [[ ${failcounter} -gt ${maxfail} ]]; then
+            echo "Timeout ($timeout seconds) reached; failed to start emulator"
+            while pkill -9 "emulator" >/dev/null 2>&1; do
+                echo "Killing emulator proces...."
+                pgrep "emulator"
+            done
+            echo "Process terminated"
+            pgrep "emulator"
+            exit 1
+        fi
+    fi
+    sleep ${sleeptime}
 done
-echo "Done"
+
+echo "Emulator is ready"
