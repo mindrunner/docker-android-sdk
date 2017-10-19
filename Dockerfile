@@ -1,5 +1,7 @@
 FROM ubuntu:17.04
 
+LABEL de.mindrunner.android-docker.flavour="built-in"
+
 # ------------------------------------------------------
 # --- Install required tools
 # Dependencies to execute Android builds
