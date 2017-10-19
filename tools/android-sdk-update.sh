@@ -48,7 +48,7 @@ mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 
 echo "Installing packages"
-if [ built_in_sdk -eq 1 ]
+if [ $built_in_sdk -eq 1 ]
 then
     android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
 else
