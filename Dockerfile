@@ -20,12 +20,6 @@ COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-linux
 
-RUN chown android:android /opt/android-sdk-linux
-
-USER android
-
-RUN /opt/tools/android-sdk-update.sh built-in
-
-USER root
+RUN /opt/tools/entrypoint.sh built-in
 
 CMD /opt/tools/entrypoint.sh built-in
