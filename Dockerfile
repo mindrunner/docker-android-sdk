@@ -2,6 +2,10 @@ FROM ubuntu:17.04
 
 LABEL de.mindrunner.android-docker.flavour="built-in"
 
+ENV ANDROID_SDK_HOME /opt/android-sdk-linux
+
+ENV ANDROID_HOME /opt/android-sdk-linux
+
 # ------------------------------------------------------
 # --- Install required tools
 # Dependencies to execute Android builds
