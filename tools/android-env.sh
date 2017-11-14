@@ -20,7 +20,7 @@ function help() {
     figlet "usage:"
     echo "update_sdk: Updates the SDK"
     echo "andep: Installs one or more android Packets."
-    echo "   -Example: anddep android-23,android-build-tools-24.0.1"
+    echo "   -Example: anddep \"platforms;android-26\""
     echo "help: Shows this help"
     echo ''
     echo ''
