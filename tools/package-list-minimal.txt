@@ -1,11 +1,7 @@
-add-ons;addon-google_apis-google-21
-add-ons;addon-google_apis-google-22
-add-ons;addon-google_apis-google-23
-add-ons;addon-google_apis-google-24
-add-ons;addon-google_gdk-google-19
-build-tools;24.0.3
-build-tools;25.0.3
+add-ons;addon-google_apis-google-26
+add-ons;addon-google_apis-google-27
 build-tools;26.0.3
+build-tools;27.0.0
 cmake;3.6.4111459
 emulator
 extras;android;gapid;1
@@ -22,9 +18,6 @@ extras;google;webdriver
 extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2
 lldb;2.3
-platforms;android-23
-platforms;android-24
-platforms;android-25
 platforms;android-26
-sources;android-25
+platforms;android-27
 tools
