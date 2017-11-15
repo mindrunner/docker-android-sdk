@@ -175,3 +175,4 @@ system-images;android-26;android-tv;x86
 system-images;android-26;android-wear;x86
 system-images;android-26;google_apis_playstore;x86
 system-images;android-26;google_apis;x86
+tools
