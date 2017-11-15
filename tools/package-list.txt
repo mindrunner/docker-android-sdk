@@ -26,6 +26,7 @@ build-tools;25.0.3
 build-tools;26.0.0
 build-tools;26.0.2
 build-tools;26.0.3
+build-tools;27.0.0
 cmake;3.6.4111459
 emulator
 extras;android;gapid;1
@@ -103,6 +104,8 @@ sources;android-22
 sources;android-23
 sources;android-24
 sources;android-25
+sources;android-26
+sources;android-27
 system-images;android-10;default;armeabi-v7a
 system-images;android-10;default;x86
 system-images;android-10;google_apis;armeabi-v7a
