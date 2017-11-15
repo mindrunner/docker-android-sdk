@@ -27,3 +27,4 @@ platforms;android-24
 platforms;android-25
 platforms;android-26
 sources;android-25
+tools
