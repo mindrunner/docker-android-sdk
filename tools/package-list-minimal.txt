@@ -7,6 +7,7 @@ build-tools;24.0.3
 build-tools;25.0.3
 build-tools;26.0.2
 cmake;3.6.4111459
+emulator
 extras;android;gapid;1
 extras;android;gapid;3
 extras;android;m2repository
