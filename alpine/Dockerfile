@@ -56,5 +56,5 @@ COPY licenses /opt/licenses
 # Working Directory
 WORKDIR /opt/android-sdk-linux
 
-RUN /opt/tools/entrypoint.sh built-in
-CMD /opt/tools/entrypoint.sh built-in
+RUN /opt/tools/entrypoint-alpine.sh built-in
+CMD /opt/tools/entrypoint-alpine.sh built-in
