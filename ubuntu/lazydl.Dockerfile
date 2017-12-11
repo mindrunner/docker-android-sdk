@@ -7,27 +7,25 @@ ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
 
-# ------------------------------------------------------
-# --- Install required tools
-# Dependencies to execute Android builds
-#RUN dpkg --add-architecture i386
-#RUN apt-get update -qq
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
-
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -qq && apt-get install -y \
-  openjdk-8-jdk \
-  wget \
+# Install required tools
+# Dependencies to execute Android builds
+
+RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
+  curl \
   expect \
   git \
-  curl \
+  libc6:i386 \
+  libgcc1:i386 \
+  libncurses5:i386 \
+  libstdc++6:i386 \
+  zlib1g:i386 \
+  openjdk-8-jdk \
+  wget \
   unzip \
   vim \
   && apt-get clean
-
-# ------------------------------------------------------
-# --- Download Android SDK tools into $ANDROID_SDK_HOME
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
