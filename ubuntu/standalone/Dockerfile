@@ -34,7 +34,7 @@ RUN apt-get update -yqq && apt-get install -y gcc make \
   && cd su-exec \
   && make \
   && mv ./su-exec /usr/sbin \
-  && apt-get purge gcc make \
+  && apt-get purge -y gcc make \
   && apt-get clean
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
