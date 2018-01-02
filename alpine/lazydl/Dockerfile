@@ -44,4 +44,4 @@ COPY licenses /opt/licenses
 # Working Directory
 WORKDIR /opt/android-sdk-linux
 
-CMD /opt/tools/entrypoint-alpine.sh lazy-dl
+CMD /opt/tools/entrypoint.sh lazy-dl
