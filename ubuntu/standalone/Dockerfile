@@ -39,9 +39,9 @@ RUN apt-get update -yqq && apt-get install -y gcc make \
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
-COPY ../../tools /opt/tools
+COPY tools /opt/tools
 
-COPY ../../licenses /opt/licenses
+COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-linux
 

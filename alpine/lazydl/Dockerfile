@@ -36,10 +36,10 @@ RUN mkdir -p /opt/android-sdk-linux \
   && adduser android -D -S -G android -h /opt/android-sdk-linux
 
 # Copy Tools
-COPY ../../tools /opt/tools
+COPY tools /opt/tools
 
 # Copy Licenses
-COPY ../../licenses /opt/licenses
+COPY licenses /opt/licenses
 
 # Working Directory
 WORKDIR /opt/android-sdk-linux
