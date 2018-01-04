@@ -1,4 +1,4 @@
-*** Builds are broken for the moment***
+**Builds are broken for the moment**
 See https://github.com/mindrunner/docker-android-sdk/pull/13 for more information. 
 
 
