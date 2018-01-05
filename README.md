@@ -1,7 +1,3 @@
-**Builds are broken for the moment**
-See https://github.com/mindrunner/docker-android-sdk/pull/13 for more information. 
-
-
 
 
 # docker-android-sdk
@@ -10,6 +6,19 @@ See https://github.com/mindrunner/docker-android-sdk/pull/13 for more informatio
 
 [![](https://images.microbadger.com/badges/version/runmymind/docker-android-sdk:lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:lazydl "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:lazydl "Get your own image badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/runmymind/docker-android-sdk:ubuntu-lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:ubuntu-lazydl "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:ubuntu-lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:ubuntu-lazydl "Get your own image badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/runmymind/docker-android-sdk:ubuntu-standalone.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:ubuntu-standalone "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:ubuntu-standalone.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:ubuntu-standalone "Get your own image badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/runmymind/docker-android-sdk:alpine-lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:alpine-lazydl "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:alpine-lazydl.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:alpine-lazydl "Get your own image badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/runmymind/docker-android-sdk:alpine-standalone.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:alpine-standalone "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:alpine-standalone.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:alpine-standalone "Get your own image badge on microbadger.com")
+
 
 **WARNING:**
 
