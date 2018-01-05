@@ -1,3 +1,15 @@
+# docker-cloud Build
+
+Builds with docker cloud are running smoothly. No need to change URLs or something. We have the following tags now:
+
+ubuntu-standalone
+ubuntu-lazydl
+alpine-standalone
+alpine-lazydl
+latest
+lazydl
+
+"latest" and "lazydl" are pointing to the ubuntu images. No idea if we really need them, but prevents older builds to fail.
 
 
 # docker-android-sdk
@@ -20,22 +32,17 @@
 [![](https://images.microbadger.com/badges/image/runmymind/docker-android-sdk:alpine-standalone.svg)](https://microbadger.com/images/runmymind/docker-android-sdk:alpine-standalone "Get your own image badge on microbadger.com")
 
 
-**WARNING:**
+This repository contains Dockerfiles to create Docker images containing the android SDK. There are two flavours for different use cases (lazydl, standalone) and two different linux bases (ubuntu, alpine). Feel free to chose which one suits you best.
 
-Some months ago I started using this image in different way:
+**Ububtu**
+The officialy supported Linux distribution for Android SDK builds. Use this one if you are unsure, which is better.
 
-The image contines only some bootstrapping files. The SDK itself will be downloaded into
-a volume which is persistent and accessible by other conainers as well. I used a separate branch for this.
+**Alpine**
+More lightweight Linux Distribution optimized for docker containers.
 
-However, most of the users seem to use the master branch where the SDK and tons of dependencies are baked into the container.
+**Standalone**
+This is the standard expected behaviour. The Android SDK is integrated in the docker image. Use this in your android build on CircleCI, Bitbucket Pipelines, or any other docker enabled CI.
 
-I am about to merge those two approaches into one single branch, without breaking too much of what we used to have.
-
-
-Now there are two Dockerfiles, thus two tags per branch on dockerhub.
-
-- use tag "latest" for the old master branch behaviour [SDK built in]
-- use tag "lazydl" for the lazy download behaviour [bootstrap SDK on container start]
-
-
-Feel free to report Problems!
+**Lazydl**
+Indeed, there is a lack of documentation and it might be not really intuitive to use the image in this way. The idea is to have two containers for the build process. One of which is the builing container executing the actual build. The other one is the sdk-data container, which downloads the whole SDK into a named docker volume which is shared between both containers.
+I will provide an example docker-compose file to make this more clear. Might take a couple of days, though.
