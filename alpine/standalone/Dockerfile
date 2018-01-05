@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-LABEL de.mindrunner.android-docker.flavour="built-in"
+LABEL de.mindrunner.android-docker.flavour="alpine-standalone"
 
 ARG GLIBC_VERSION="2.26-r0"
 
