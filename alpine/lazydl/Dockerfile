@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-LABEL de.mindrunner.android-docker.flavour="lazy-dl"
+LABEL de.mindrunner.android-docker.flavour="alpine-lazydl"
 
 ARG GLIBC_VERSION="2.26-r0"
 
