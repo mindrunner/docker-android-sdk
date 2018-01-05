@@ -1,6 +1,6 @@
 FROM ubuntu:17.04
 
-LABEL de.mindrunner.android-docker.flavour="lazy-dl"
+LABEL de.mindrunner.android-docker.flavour="ubuntu-lazydl"
 
 ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
