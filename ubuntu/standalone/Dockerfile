@@ -1,6 +1,6 @@
 FROM ubuntu:17.04
 
-LABEL de.mindrunner.android-docker.flavour="built-in"
+LABEL de.mindrunner.android-docker.flavour="ubuntu-standalone"
 
 ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
