@@ -27,6 +27,16 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   vim \
   && apt-get clean
 
+# Install su-exec
+RUN apt-get update -yqq && apt-get install -y gcc make \
+  && cd /tmp \
+  && git clone https://github.com/ncopa/su-exec.git \
+  && cd su-exec \
+  && make \
+  && mv ./su-exec /usr/sbin \
+  && apt-get purge -y gcc make \
+  && apt-get clean
+
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
 COPY tools /opt/tools
