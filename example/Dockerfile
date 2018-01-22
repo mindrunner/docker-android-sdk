@@ -31,6 +31,7 @@ RUN mkdir -p /opt/android-sdk-linux \
   && adduser android -D -G android -h /opt/android-sdk-linux
 
 # Copy Tools
+COPY tools/locking.sh /opt/tools/locking.sh
 COPY example/run-example.sh /opt/
 
 # Working Directory
