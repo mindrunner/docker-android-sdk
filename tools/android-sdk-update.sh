@@ -3,9 +3,13 @@
 mkdir -p /opt/android-sdk-linux/bin/
 cp /opt/tools/android-env.sh /opt/android-sdk-linux/bin/
 source /opt/android-sdk-linux/bin/android-env.sh
+source /opt/tools/locking.sh
 
 built_in_sdk=1
 
+if ! lockfile_waithold ; then
+     exit 1
+fi
 
 echo $#
 
@@ -60,3 +64,5 @@ update_sdk
 
 echo "Accepting Licenses"
 android-accept-licenses.sh "sdkmanager --licenses --verbose"
+
+lockfile_release

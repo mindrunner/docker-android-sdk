@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  android-sdk:
+    image: runmymind/docker-android-sdk:example_and_locking-alpine-lazydl
+    volumes:
+        - android-sdk:/opt/android-sdk-linux
+    restart: always
+
+  java:
+    image: runmymind/docker-android-sdk:example_and_locking-example
+    volumes:
+        - android-sdk:/opt/android-sdk-linux
+    restart: always
+
+volumes:
+    android-sdk:

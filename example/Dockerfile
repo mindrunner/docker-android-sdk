@@ -1,13 +1,8 @@
 FROM openjdk:8-jdk-alpine
 
-LABEL de.mindrunner.android-docker.flavour="alpine-lazydl"
+LABEL de.mindrunner.android-docker.flavour="docker-android-example"
 
 ARG GLIBC_VERSION="2.26-r0"
-
-ENV ANDROID_SDK_HOME /opt/android-sdk-linux
-ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
-ENV ANDROID_HOME /opt/android-sdk-linux
-ENV ANDROID_SDK /opt/android-sdk-linux
 
 # Install Required Tools
 RUN apk -U update && apk -U add \
@@ -36,12 +31,9 @@ RUN mkdir -p /opt/android-sdk-linux \
   && adduser android -D -G android -h /opt/android-sdk-linux
 
 # Copy Tools
-COPY tools /opt/tools
-
-# Copy Licenses
-COPY licenses /opt/licenses
+COPY example/run-example.sh /opt/
 
 # Working Directory
 WORKDIR /opt/android-sdk-linux
 
-CMD /opt/tools/entrypoint.sh lazy-dl
+CMD /opt/run-example.sh
