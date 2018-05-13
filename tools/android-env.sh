@@ -28,7 +28,7 @@ function help() {
 }
 
 function update_sdk() {
-    android-accept-licenses.sh "sdkmanager --update"
+    android-accept-licenses.sh "sdkmanager ${SDKMANAGER_OPTS} --update"
 }
 
 function andep() {
@@ -36,7 +36,7 @@ function andep() {
         help
         return 1
     fi
-    android-accept-licenses.sh  "sdkmanager ${1}"
+    android-accept-licenses.sh  "sdkmanager ${SDKMANAGER_OPTS} ${1}"
 }
 
 export -f help

@@ -8,6 +8,10 @@ built_in_sdk=1
 
 if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
   export JAVA_OPTS="-Djava.net.useSystemProxies=true $JAVA_OPTS -Dhttp.noProxyHosts=${no_proxy}"
+  # This only works if there is a proxy listening on docker host machine and
+  # container is started with --net=host. No other options for now. Thanks
+  # google....
+  export SDKMANAGER_OPTS="--no_https --proxy=http --proxy_host=127.0.0.1 --proxy_port=3128"
 fi
 
 printenv
@@ -55,13 +59,13 @@ cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
 then
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
+    android-accept-licenses.sh "sdkmanager ${SDKMANAGER_OPTS} --package_file=/opt/tools/package-list-minimal.txt --verbose"
 else
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
+    android-accept-licenses.sh "sdkmanager ${SDKMANAGER_OPTS} --package_file=/opt/tools/package-list.txt --verbose"
 fi
 
 echo "Updating SDK"
 update_sdk
 
 echo "Accepting Licenses"
-android-accept-licenses.sh "sdkmanager --licenses --verbose"
+android-accept-licenses.sh "sdkmanager ${SDKMANAGER_OPTS} --licenses --verbose"
