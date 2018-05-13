@@ -6,6 +6,7 @@ source /opt/android-sdk-linux/bin/android-env.sh
 
 built_in_sdk=1
 
+printenv
 
 echo $#
 
