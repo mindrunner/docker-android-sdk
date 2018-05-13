@@ -11,7 +11,7 @@ if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
   # This only works if there is a proxy listening on docker host machine and
   # container is started with --net=host. No other options for now. Thanks
   # google....
-  export SDKMANAGER_OPTS="--no_https --proxy=http --proxy_host=127.0.0.1 --proxy_port=3128"
+  export SDKMANAGER_OPTS=" --proxy=http --proxy_host=127.0.0.1 --proxy_port=3128 "
 fi
 
 printenv
@@ -55,6 +55,9 @@ cp -rv /opt/licenses ${ANDROID_HOME}/licenses
 echo "Copying Tools"
 mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
+
+sdkmanager --help
+
 
 echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
