@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:18.04
 
 LABEL de.mindrunner.android-docker.flavour="ubuntu-lazydl"
 
