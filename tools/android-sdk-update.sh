@@ -6,6 +6,10 @@ source /opt/android-sdk-linux/bin/android-env.sh
 
 built_in_sdk=1
 
+if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
+  export JAVA_OPTS="-Djava.net.useSystemProxies=true $JAVA_OPTS -Dhttp.noProxyHosts=${no_proxy}"
+fi
+
 printenv
 
 echo $#
