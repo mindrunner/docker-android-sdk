@@ -6,13 +6,7 @@ source /opt/android-sdk-linux/bin/android-env.sh
 
 built_in_sdk=1
 
-if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
-  export JAVA_OPTS="-Djava.net.useSystemProxies=true $JAVA_OPTS -Dhttp.noProxyHosts=${no_proxy}"
-  # This only works if there is a proxy listening on docker host machine and
-  # container is started with --net=host. No other options for now. Thanks
-  # google....
-  export SDKMNGR_OPTS=" --proxy=http --proxy_host=127.0.0.1 --proxy_port=3128 "
-fi
+
 
 printenv
 
