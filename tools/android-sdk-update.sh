@@ -7,6 +7,9 @@ source /opt/android-sdk-linux/bin/android-env.sh
 built_in_sdk=1
 
 
+
+printenv
+
 echo $#
 
 echo $1
@@ -47,16 +50,18 @@ echo "Copying Tools"
 mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 
+sdkmanager --help
+
 echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
 then
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
+    android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --package_file=/opt/tools/package-list-minimal.txt --verbose"
 else
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
+    android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --package_file=/opt/tools/package-list.txt --verbose"
 fi
 
 echo "Updating SDK"
 update_sdk
 
 echo "Accepting Licenses"
-android-accept-licenses.sh "sdkmanager --licenses --verbose"
+android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --licenses --verbose"

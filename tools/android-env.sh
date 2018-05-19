@@ -7,6 +7,14 @@ export ANDROID_SDK=${ANDROID_HOME}
 
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/bin:
 
+if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
+    export JAVA_OPTS="-Djava.net.useSystemProxies=true $JAVA_OPTS -Dhttp.noProxyHosts=${no_proxy}"
+    # This only works if there is a proxy listening on docker host machine and
+    # container is started with --net=host. No other options for now. Thanks
+    # google....
+    export SDKMNGR_OPTS=" --proxy=http --proxy_host=127.0.0.1 --proxy_port=3128 "
+fi
+
 function print_header() {
     figlet SBB CFF FFS
     figlet welcome to
@@ -28,7 +36,7 @@ function help() {
 }
 
 function update_sdk() {
-    android-accept-licenses.sh "sdkmanager --update"
+    android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --update"
 }
 
 function andep() {
@@ -36,7 +44,7 @@ function andep() {
         help
         return 1
     fi
-    android-accept-licenses.sh  "sdkmanager ${1}"
+    android-accept-licenses.sh  "sdkmanager ${SDKMNGR_OPTS} ${1}"
 }
 
 export -f help
