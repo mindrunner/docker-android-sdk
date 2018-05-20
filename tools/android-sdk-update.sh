@@ -6,14 +6,6 @@ source /opt/android-sdk-linux/bin/android-env.sh
 
 built_in_sdk=1
 
-
-
-printenv
-
-echo $#
-
-echo $1
-
 if [ $# -ge 0 ] && [ "$1" == "lazy-dl" ]
 then
     echo "Using Lazy Download Flavour"
@@ -49,8 +41,6 @@ cp -rv /opt/licenses ${ANDROID_HOME}/licenses
 echo "Copying Tools"
 mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
-
-sdkmanager --help
 
 echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
