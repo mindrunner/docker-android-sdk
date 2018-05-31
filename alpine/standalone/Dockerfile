@@ -33,7 +33,7 @@ RUN apk -U update && apk -U add \
 # Create android User
 RUN mkdir -p /opt/android-sdk-linux \
   && addgroup android \
-  && adduser android -D -G android -h /opt/android-sdk-linux
+  && adduser android -D -G android -h /opt/android-sdk-linux -u 1100
 
 # Copy Tools
 COPY tools /opt/tools
