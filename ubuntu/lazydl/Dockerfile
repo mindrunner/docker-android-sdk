@@ -27,7 +27,7 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   vim \
   && apt-get clean
 
-RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1100 android
+RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1000 android
 
 COPY tools /opt/tools
 
