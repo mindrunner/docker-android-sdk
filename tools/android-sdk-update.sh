@@ -44,12 +44,16 @@ echo "Copying Tools"
 mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 
+echo "Print sdkmanager version"
+sdkmanager --version
+
+
 echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
 then
-    while read p; do android-accept-licenses.sh sdkmanager ${SDKMNGR_OPTS} --verbose ${p}; done < /opt/tools/package-list-minimal.txt
+    while read p; do android-accept-licenses.sh sdkmanager ${SDKMNGR_OPTS} ${p}; done < /opt/tools/package-list-minimal.txt
 else
-    while read p; do android-accept-licenses.sh sdkmanager ${SDKMNGR_OPTS} --verbose ${p}; done < /opt/tools/package-list.txt
+    while read p; do android-accept-licenses.sh sdkmanager ${SDKMNGR_OPTS} ${p}; done < /opt/tools/package-list.txt
 fi
 
 echo "Updating SDK"
