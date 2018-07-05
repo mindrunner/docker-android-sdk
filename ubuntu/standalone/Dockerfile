@@ -33,7 +33,7 @@ RUN  rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share
 
 ENV LANG en_US.UTF-8
 
-RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1100 android
+RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1000 android
 
 COPY tools /opt/tools
 
