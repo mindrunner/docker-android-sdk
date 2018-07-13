@@ -16,6 +16,7 @@ RUN apk -U update && apk -U add \
   curl \
   expect \
   git \
+  make \
   libstdc++ \
   libgcc \
   su-exec \
