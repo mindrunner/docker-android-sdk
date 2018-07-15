@@ -84,6 +84,7 @@ extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.
 lldb;3.1
 ndk-bundle
 patcher;v4
+platform-tools
 platforms;android-10
 platforms;android-11
 platforms;android-12
