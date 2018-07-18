@@ -52,11 +52,11 @@ echo "Installing packages"
 if [ $built_in_sdk -eq 1 ]
 then
     while read p; do 
-      android-accept-licenses.sh "sdkmanager --verbose ${SDKMNGR_OPTS} ${p}"
+      android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${p}"
     done < /opt/tools/package-list-minimal.txt
 else
     while read p; do
-      android-accept-licenses.sh "sdkmanager --verbose ${SDKMNGR_OPTS} ${p}"
+      android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${p}"
     done < /opt/tools/package-list.txt
 fi
 
@@ -64,4 +64,4 @@ echo "Updating SDK"
 update_sdk
 
 echo "Accepting Licenses"
-android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --licenses --verbose"
+android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --licenses"
