@@ -34,7 +34,7 @@ lazydl
 
 This repository contains Dockerfiles to create Docker images containing the android SDK. There are two flavours for different use cases (lazydl, standalone) and two different linux bases (ubuntu, alpine). Feel free to chose which one suits you best.
 
-**Ububtu**
+**Ubuntu**
 The officialy supported Linux distribution for Android SDK builds. Use this one if you are unsure, which is better.
 
 **Alpine**
