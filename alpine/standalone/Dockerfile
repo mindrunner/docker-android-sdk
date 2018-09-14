@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-alpine
 
 LABEL de.mindrunner.android-docker.flavour="alpine-standalone"
 
-ARG GLIBC_VERSION="2.26-r0"
+ARG GLIBC_VERSION="2.28-r0"
 
 ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
