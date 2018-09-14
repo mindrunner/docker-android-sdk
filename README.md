@@ -1,6 +1,6 @@
 # docker-cloud Build
 
-Builds with docker cloud are running smoothly. No need to change URLs or something. We have the following tags now:
+Use one of the following Tags: (see below)
 
 ubuntu-standalone
 ubuntu-lazydl
@@ -9,7 +9,7 @@ alpine-lazydl
 latest
 lazydl
 
-"latest" and "lazydl" are pointing to the ubuntu images. No idea if we really need them, but prevents older builds to fail.
+"latest" and "lazydl" are pointing to the ubuntu images
 
 
 # docker-android-sdk
