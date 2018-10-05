@@ -32,8 +32,9 @@ build-tools;27.0.1
 build-tools;27.0.2
 build-tools;27.0.3
 build-tools;28.0.0
-build-tools;28.0.0-rc1
-build-tools;28.0.0-rc2
+build-tools;28.0.1
+build-tools;28.0.2
+build-tools;28.0.3
 cmake;3.6.4111459
 docs
 emulator
@@ -121,6 +122,7 @@ sources;android-24
 sources;android-25
 sources;android-26
 sources;android-27
+sources;android-28
 system-images;android-10;default;armeabi-v7a
 system-images;android-10;default;x86
 system-images;android-10;google_apis;armeabi-v7a
