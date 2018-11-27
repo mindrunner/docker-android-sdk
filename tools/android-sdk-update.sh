@@ -68,6 +68,6 @@ android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} --licenses"
 
 # https://stackoverflow.com/questions/35128229/error-no-toolchains-found-in-the-ndk-toolchains-folder-for-abi-with-prefix-llv
 ( cd /opt/android-sdk-linux/ndk-bundle/toolchains \
-&& ln -s aarch64-linux-android-4.9 mips64el-linux-android \
-&& ln -s arm-linux-androideabi-4.9 mipsel-linux-android )
+&& ln -sf aarch64-linux-android-4.9 mips64el-linux-android \
+&& ln -sf arm-linux-androideabi-4.9 mipsel-linux-android )
 

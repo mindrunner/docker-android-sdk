@@ -47,7 +47,6 @@ extras;google;instantapps
 extras;google;m2repository
 extras;google;market_apk_expansion
 extras;google;market_licensing
-extras;google;play_billing
 extras;google;simulators
 extras;google;webdriver
 extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0
@@ -108,7 +107,6 @@ platforms;android-28
 platforms;android-7
 platforms;android-8
 platforms;android-9
-platforms;android-P
 sources;android-15
 sources;android-16
 sources;android-17
@@ -129,7 +127,6 @@ system-images;android-10;google_apis;armeabi-v7a
 system-images;android-10;google_apis;x86
 system-images;android-14;default;armeabi-v7a
 system-images;android-15;default;armeabi-v7a
-system-images;android-15;default;mips
 system-images;android-15;default;x86
 system-images;android-15;google_apis;armeabi-v7a
 system-images;android-15;google_apis;x86
@@ -158,7 +155,6 @@ system-images;android-21;default;x86_64
 system-images;android-21;google_apis;armeabi-v7a
 system-images;android-21;google_apis;x86
 system-images;android-21;google_apis;x86_64
-system-images;android-22;android-tv;armeabi-v7a
 system-images;android-22;android-tv;x86
 system-images;android-22;default;armeabi-v7a
 system-images;android-22;default;x86
@@ -211,7 +207,4 @@ system-images;android-28;google_apis_playstore;x86
 system-images;android-28;google_apis_playstore;x86_64
 system-images;android-28;google_apis;x86
 system-images;android-28;google_apis;x86_64
-system-images;android-P;android-wear-cn;x86
-system-images;android-P;android-wear;x86
-system-images;android-P;google_apis;x86_64
 tools
