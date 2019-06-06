@@ -19,6 +19,7 @@ else
 fi
 
 
+chmod -R 0777 /opt/android-sdk-linux
 
 
 
