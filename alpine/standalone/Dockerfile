@@ -19,6 +19,8 @@ RUN apk -U update && apk -U add \
   make \
   libstdc++ \
   libgcc \
+  nodejs \
+  npm \
   su-exec \
   ncurses \
   unzip \
