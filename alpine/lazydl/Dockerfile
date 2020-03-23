@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM alpine:latest
 
 LABEL de.mindrunner.android-docker.flavour="alpine-lazydl"
 
@@ -8,6 +8,7 @@ ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 
 # Install Required Tools
 RUN apk -U update && apk -U add \
@@ -15,12 +16,16 @@ RUN apk -U update && apk -U add \
   ca-certificates \
   curl \
   expect \
+  fontconfig \
   git \
   make \
   libstdc++ \
   libgcc \
+  mesa-dev \
   nodejs \
   npm \
+  openjdk8 \
+  pulseaudio-dev \
   su-exec \
   ncurses \
   unzip \
