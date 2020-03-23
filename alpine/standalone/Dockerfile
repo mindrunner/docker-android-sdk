@@ -15,13 +15,16 @@ RUN apk -U update && apk -U add \
   ca-certificates \
   curl \
   expect \
+  fontconfig \
   git \
   make \
   libstdc++ \
   libgcc \
+  mesa-dev \
   nodejs \
   npm \
   openjdk8 \
+  pulseaudio-dev \
   su-exec \
   ncurses \
   unzip \
