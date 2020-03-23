@@ -1,0 +1,70 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+
+.build-image: &build-image
+  - docker build -t runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG -f ${TAG_PREFIX/-/\//}/Dockerfile .
+  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
+  - docker run -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
+  - docker tag runmymind/docker-android-sdk.slim runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
+  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
+
+before_script:
+  - echo $DOCKER_HUB_KEY | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+
+alpine-lazydl:
+  type: build
+  variables:
+    TAG_PREFIX: "alpine-lazydl"
+  script:
+    - *build-image
+
+alpine-standalone:
+  type: build
+  variables:
+    TAG_PREFIX: "alpine-standalone"
+  script:
+    - *build-image
+
+ubuntu-lazydl:
+  type: build
+  variables:
+    TAG_PREFIX: "ubuntu-lazydl"
+  script:
+    - *build-image
+
+ubuntu-standalone:
+  type: build
+  variables:
+    TAG_PREFIX: "ubuntu-standalone"
+  script:
+    - *build-image
+
+release:
+  type: deploy
+  script:
+    - docker pull runmymind/docker-android-sdk:alpine-lazydl-master
+    - docker pull runmymind/docker-android-sdk:alpine-standalone-master
+    - docker pull runmymind/docker-android-sdk:ubuntu-lazydl-master
+    - docker pull runmymind/docker-android-sdk:ubuntu-standalone-master
+
+    - docker tag runmymind/docker-android-sdk:alpine-lazydl-master runmymind/docker-android-sdk:alpine-lazydl
+    - docker tag runmymind/docker-android-sdk:alpine-standalone-master runmymind/docker-android-sdk:alpine-standalone
+    - docker tag runmymind/docker-android-sdk:ubuntu-lazydl-master runmymind/docker-android-sdk:ubuntu-lazydl
+    - docker tag runmymind/docker-android-sdk:ubuntu-standalone-master runmymind/docker-android-sdk:ubuntu-standalone
+
+    - docker tag runmymind/docker-android-sdk:ubuntu-lazydl-master runmymind/docker-android-sdk:lazydl
+    - docker tag runmymind/docker-android-sdk:ubuntu-standalone-master runmymind/docker-android-sdk:latest
+
+    - docker push runmymind/docker-android-sdk:alpine-lazydl
+    - docker push runmymind/docker-android-sdk:alpine-standalone
+    - docker push runmymind/docker-android-sdk:ubuntu-lazydl
+    - docker push runmymind/docker-android-sdk:ubuntu-standalone
+
+    - docker push runmymind/docker-android-sdk:lazydl
+    - docker push runmymind/docker-android-sdk:latest
+  only:
+    - master
+
