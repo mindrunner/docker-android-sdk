@@ -6,9 +6,10 @@ services:
 
 .build-image: &build-image
   - docker build -t runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG -f ${TAG_PREFIX/-/\//}/Dockerfile .
-  - docker run -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
-  - docker tag runmymind/docker-android-sdk.slim runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
   - docker push runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
+  - docker run -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
+  - docker tag runmymind/docker-android-sdk.slim runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
+  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
 
 before_script:
   - echo $DOCKER_HUB_KEY | docker login -u $DOCKER_HUB_USERNAME --password-stdin
