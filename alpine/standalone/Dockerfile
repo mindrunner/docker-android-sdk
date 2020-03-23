@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM alpine:latest
 
 LABEL de.mindrunner.android-docker.flavour="alpine-standalone"
 
@@ -21,6 +21,7 @@ RUN apk -U update && apk -U add \
   libgcc \
   nodejs \
   npm \
+  openjdk8 \
   su-exec \
   ncurses \
   unzip \
