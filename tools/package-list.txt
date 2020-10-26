@@ -108,6 +108,7 @@ platforms;android-26
 platforms;android-27
 platforms;android-28
 platforms;android-29
+platforms;android-30
 platforms;android-7
 platforms;android-8
 platforms;android-9
