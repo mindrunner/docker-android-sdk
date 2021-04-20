@@ -22,8 +22,6 @@ RUN apk -U update && apk -U add \
   libstdc++ \
   libgcc \
   mesa-dev \
-  nodejs \
-  npm \
   openjdk8 \
   pulseaudio-dev \
   su-exec \
