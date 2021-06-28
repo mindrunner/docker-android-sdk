@@ -1,70 +1,143 @@
 image: docker:latest
 
 services:
-  - docker:dind
+  - docker:19-dind
 
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_REGISTRY: docker.io/runmymind
+  PROJECT_NAME: docker-andoid-sdk
+
+stages:
+  - test
+  - build
+  - release
+
+lint-docker:
+  stage: test
+  image:
+    name: hadolint/hadolint:latest-alpine
+    entrypoint: [ "/bin/sh", "-c" ]
+  script:
+    - hadolint --ignore=DL3059 Dockerfile
+  dependencies: [ ]
+
+.login-docker: &login-docker
+  - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_KEY
 
 .build-image: &build-image
-  - docker build -t runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG -f ${TAG_PREFIX/-/\//}/Dockerfile .
-  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
-  - docker run -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
-  - docker tag runmymind/docker-android-sdk.slim runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
-  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-slim-$CI_COMMIT_REF_SLUG
+  stage: build
+  image: docker
+  before_script:
+    - ': before_script'
+    - *login-docker
+    - docker pull ${DOCKER_REGISTRY}/${PROJECT_NAME}:$TAG_PREFIX-latest || true
+  script:
+    - docker build
+      --cache-from ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-latest
+      --build-arg APP_VERSION=${CI_COMMIT_SHORT_SHA}
+      --build-arg GITLAB_TOKEN=${CI_PRIVATE_TOKEN}
+      -t ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA}
+      -f ${TAG_PREFIX/-/\//}/Dockerfile
+      .
+    - docker push ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA}
 
-before_script:
-  - echo $DOCKER_HUB_KEY | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+.tag: &tag
+  before_script:
+    - ': before_script'
+    - *login-docker
+    - docker pull ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA}
+  script:
+    - docker tag ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA} ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG-PREFIX}-${TAG}
+    - docker push ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${TAG}
 
-alpine-lazydl:
-  type: build
+.tag-no-prefix: &tag-no-prefix
+  before_script:
+    - ': before_script'
+    - *login-docker
+    - docker pull ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA}
+  script:
+    - docker tag ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA} ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG}
+    - docker push ${DOCKER_REGISTRY}/${PROJECT_NAME}:${TAG}
+
+build-alpine-lazydl:
+  stage: build
   variables:
     TAG_PREFIX: "alpine-lazydl"
-  script:
-    - *build-image
+  <<: *build-image
 
-alpine-standalone:
-  type: build
+build-alpine-standalone:
+  stage: build
   variables:
     TAG_PREFIX: "alpine-standalone"
-  script:
-    - *build-image
+  <<: *build-image
 
-ubuntu-lazydl:
-  type: build
+build-ubuntu-lazydl:
+  stage: build
   variables:
+    TAG: latest
     TAG_PREFIX: "ubuntu-lazydl"
-  script:
-    - *build-image
+  <<: *build-image
 
-ubuntu-standalone:
-  type: build
+build-ubuntu-standalone:
+  stage: build
   variables:
+    TAG: latest
     TAG_PREFIX: "ubuntu-standalone"
-  script:
-    - *build-image
+  <<: *build-image
 
-release:
-  type: deploy
-  script:
-    - docker pull runmymind/docker-android-sdk:alpine-lazydl-master
-    - docker pull runmymind/docker-android-sdk:alpine-standalone-master
-    - docker pull runmymind/docker-android-sdk:ubuntu-lazydl-master
-    - docker pull runmymind/docker-android-sdk:ubuntu-standalone-master
-
-    - docker tag runmymind/docker-android-sdk:alpine-lazydl-master runmymind/docker-android-sdk:alpine-lazydl
-    - docker tag runmymind/docker-android-sdk:alpine-standalone-master runmymind/docker-android-sdk:alpine-standalone
-    - docker tag runmymind/docker-android-sdk:ubuntu-lazydl-master runmymind/docker-android-sdk:ubuntu-lazydl
-    - docker tag runmymind/docker-android-sdk:ubuntu-standalone-master runmymind/docker-android-sdk:ubuntu-standalone
-
-    - docker tag runmymind/docker-android-sdk:ubuntu-lazydl-master runmymind/docker-android-sdk:lazydl
-    - docker tag runmymind/docker-android-sdk:ubuntu-standalone-master runmymind/docker-android-sdk:latest
-
-    - docker push runmymind/docker-android-sdk:alpine-lazydl
-    - docker push runmymind/docker-android-sdk:alpine-standalone
-    - docker push runmymind/docker-android-sdk:ubuntu-lazydl
-    - docker push runmymind/docker-android-sdk:ubuntu-standalone
-
-    - docker push runmymind/docker-android-sdk:lazydl
-    - docker push runmymind/docker-android-sdk:latest
+release-alpine-lazydl:
+  stage: release
+  variables:
+    TAG: latest
+    TAG_PREFIX: "alpine-lazydl"
+  <<: *tag
   only:
     - master
 
+release-alpine-standalone:
+  stage: release
+  variables:
+    TAG: latest
+    TAG_PREFIX: "alpine-standalone"
+  <<: *tag
+  only:
+    - master
+
+release-ubuntu-lazydl:
+  stage: release
+  variables:
+    TAG: latest
+    TAG_PREFIX: "ubuntu-lazydl"
+  <<: *tag
+  only:
+    - master
+
+release-ubuntu-standalone:
+  stage: release
+  variables:
+    TAG: latest
+    TAG_PREFIX: "ubuntu-standalone"
+  <<: *tag
+  only:
+    - master
+
+release-lazydl:
+  stage: release
+  variables:
+    TAG: lazydl
+    TAG_PREFIX: "ubuntu-lazydl"
+  <<: *tag-no-prefix
+  only:
+    - master
+
+release-latest:
+  stage: release
+  variables:
+    TAG: latest
+    TAG_PREFIX: "ubuntu-standalone"
+  <<: *tag-no-prefix
+  only:
+    - master
