@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install required tools
 # Dependencies to execute Android builds
 
-RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
+RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y --no-install-recommends \
   curl \
   expect \
   git \
@@ -30,9 +30,9 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   locales \
   nodejs \
   npm \
-  && apt-get clean
-
-RUN  rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+   && apt-get clean \
+   && rm -rf /var/lib/apt/lists/* \
+   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG en_US.UTF-8
 
@@ -44,4 +44,4 @@ COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-linux
 
-CMD /opt/tools/entrypoint.sh lazy-dl
+CMD ["/opt/tools/entrypoint.sh", "lazy-dl"]
