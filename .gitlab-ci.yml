@@ -21,7 +21,10 @@ lint-docker:
     name: hadolint/hadolint:latest-alpine
     entrypoint: [ "/bin/sh", "-c" ]
   script:
-    - hadolint --ignore=DL3059 Dockerfile
+    - hadolint --ignore=DL3059 ubuntu/lazy-dl/Dockerfile
+    - hadolint --ignore=DL3059 ubuntu/standalone/Dockerfile
+    - hadolint --ignore=DL3059 alpine/lazydl/Dockerfile
+    - hadolint --ignore=DL3059 alpine/standalone/Dockerfile
   dependencies: [ ]
 
 .login-docker: &login-docker
