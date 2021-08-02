@@ -22,7 +22,7 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   libncurses5:i386 \
   libstdc++6:i386 \
   zlib1g:i386 \
-  openjdk-8-jdk \
+  openjdk-11-jdk \
   wget \
   unzip \
   vim \
