@@ -29,9 +29,11 @@ else
     echo "Bootstrapping SDK-Tools"
     wget -q http://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O sdk-tools-linux.zip \
       && unzip sdk-tools-linux.zip \
-      && mv cmdline-tools tools \
-      && touch .bootstrapped \
-      && rm sdk-tools-linux.zip
+      && cd cmdline-tools \
+      && mkdir -p latest \
+      && mv * latest \
+      ; touch .bootstrapped \
+      ; rm sdk-tools-linux.zip
 fi
 
 echo "Make sure repositories.cfg exists"
