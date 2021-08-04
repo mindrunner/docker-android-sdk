@@ -8,11 +8,12 @@ ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk
 
 # Install Required Tools
 RUN apk -U update && apk -U add \
   bash \
+  libarchive-tools \
   ca-certificates \
   curl \
   expect \
