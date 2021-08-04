@@ -27,13 +27,11 @@ then
     echo "SDK Tools already bootstrapped. Skipping initial setup"
 else
     echo "Bootstrapping SDK-Tools"
-    wget -q http://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O sdk-tools-linux.zip \
-      && unzip sdk-tools-linux.zip \
-      && cd cmdline-tools \
-      && mkdir -p latest \
-      && mv * latest \
-      ; touch .bootstrapped \
-      ; rm sdk-tools-linux.zip
+    mkdir -p cmdline-tools/latest/ \
+      && curl -sSL http://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -o sdk-tools-linux.zip \
+      && bsdtar xvf sdk-tools-linux.zip --strip-components=1 -C cmdline-tools/latest \
+      && rm sdk-tools-linux.zip \
+      && touch .bootstrapped
 fi
 
 echo "Make sure repositories.cfg exists"
