@@ -1,5 +1,6 @@
 build-tools;28.0.3
 build-tools;29.0.2
+build-tools;30.0.2
 cmake
 emulator
 extras;android;gapid;3
@@ -19,4 +20,5 @@ ndk-bundle
 platform-tools
 platforms;android-28
 platforms;android-29
+platforms;android-30
 tools
