@@ -1,59 +1,78 @@
-image: docker:latest
+image:
+  name: gcr.io/kaniko-project/executor:debug
+  entrypoint: [ "" ]
 
-services:
-  - docker:dind
-
-.build-image: &build-image
-  - docker build -t runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG -f ${TAG_PREFIX/-/\//}/Dockerfile .
-  - docker push runmymind/docker-android-sdk:$TAG_PREFIX-$CI_COMMIT_REF_SLUG
-
-.release-lazydl: &release-lazydl
-  - docker tag runmymind/docker-android-sdk:${TAG_PREFIX}-master runmymind/docker-android-sdk:lazydl
-  - docker push runmymind/docker-android-sdk:lazydl
-
-.release-latest: &release-latest
-  - docker tag runmymind/docker-android-sdk:${TAG_PREFIX}-master runmymind/docker-android-sdk:latest
-  - docker push runmymind/docker-android-sdk:latest
-
-.release-image: &release-image
-    - docker pull runmymind/docker-android-sdk:${TAG_PREFIX}-master
-    - docker tag runmymind/docker-android-sdk:${TAG_PREFIX}-master runmymind/docker-android-sdk:${TAG_PREFIX}
-    - docker push runmymind/docker-android-sdk:${TAG_PREFIX}
+stages:
+  - build
+  - release
 
 before_script:
-  - echo $DOCKER_HUB_KEY | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+  - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$(echo -n ${DOCKER_HUB_USERNAME}:${DOCKER_HUB_KEY} | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+
+.build-image: &build-image
+  - |-
+    export DOCKER_REPO=$(echo "$DOCKER_REPO" | tr '[:upper:]' '[:lower:]')
+    /kaniko/executor \
+      --context "${CONTEXT}" \
+      --dockerfile "${DOCKERFILE}" \
+      --destination "${DOCKER_REPO}:${TAG_PREFIX}-${CI_COMMIT_REF_SLUG}" \
+      --destination "${DOCKER_REPO}:${TAG_PREFIX}-${CI_COMMIT_SHORT_SHA}" \
+      $(if [ ! -z "${CI_COMMIT_TAG}" ]; then echo "--destination ${DOCKER_REPO}:${CI_COMMIT_TAG}"; fi) \
+      ${DOCKER_BUILD_ARGS}
+
+.release-lazydl: &release-lazydl
+  - echo "FROM runmymind/docker-android-sdk:${TAG_PREFIX}-master" | /kaniko/executor --dockerfile /dev/stdin --destination runmymind/docker-android-sdk:lazydl
+
+.release-latest: &release-latest
+  - echo "FROM runmymind/docker-android-sdk:${TAG_PREFIX}-master" | /kaniko/executor --dockerfile /dev/stdin --destination runmymind/docker-android-sdk:latest
+
+.release-image: &release-image
+    - echo "FROM runmymind/docker-android-sdk:${TAG_PREFIX}-master" | /kaniko/executor --dockerfile /dev/stdin --destination runmymind/docker-android-sdk:${TAG_PREFIX}
+
 
 build-alpine-lazydl:
-  type: build
+  stage: build
   variables:
+    CONTEXT: ${CI_PROJECT_DIR}
+    DOCKERFILE: ${CI_PROJECT_DIR}/alpine/lazydl/Dockerfile
+    DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "alpine-lazydl"
   script:
     - *build-image
 
 build-alpine-standalone:
-  type: build
+  stage: build
   variables:
+    CONTEXT: ${CI_PROJECT_DIR}
+    DOCKERFILE: ${CI_PROJECT_DIR}/alpine/standalone/Dockerfile
+    DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "alpine-standalone"
   script:
     - *build-image
 
 build-ubuntu-lazydl:
-  type: build
+  stage: build
   variables:
+    CONTEXT: ${CI_PROJECT_DIR}
+    DOCKERFILE: ${CI_PROJECT_DIR}/ubuntu/lazydl/Dockerfile
+    DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "ubuntu-lazydl"
   script:
     - *build-image
 
 build-ubuntu-standalone:
-  type: build
+  stage: build
   variables:
+    CONTEXT: ${CI_PROJECT_DIR}
+    DOCKERFILE: ${CI_PROJECT_DIR}/ubuntu/standalone/Dockerfile
+    DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "ubuntu-standalone"
   script:
     - *build-image
 
 
 release-alpine-lazydl:
-  type: deploy
+  stage: release
   variables:
     TAG_PREFIX: "alpine-lazydl"
   script:
@@ -62,7 +81,7 @@ release-alpine-lazydl:
     - master
 
 release-alpine-standalone:
-  type: deploy
+  stage: release
   variables:
     TAG_PREFIX: "alpine-standalone"
   script:
@@ -71,7 +90,7 @@ release-alpine-standalone:
     - master
 
 release-ubuntu-lazydl:
-  type: deploy
+  stage: release
   variables:
     TAG_PREFIX: "ubuntu-lazydl"
   script:
@@ -81,7 +100,7 @@ release-ubuntu-lazydl:
     - master
 
 release-ubuntu-standalone:
-  type: deploy
+  stage: release
   variables:
     TAG_PREFIX: "ubuntu-standalone"
   script:
