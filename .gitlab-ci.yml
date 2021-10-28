@@ -13,6 +13,8 @@ before_script:
   - |-
     export DOCKER_REPO=$(echo "$DOCKER_REPO" | tr '[:upper:]' '[:lower:]')
     /kaniko/executor \
+      --snapshotMode=redo \
+      --use-new-run \
       --context "${CONTEXT}" \
       --dockerfile "${DOCKERFILE}" \
       --destination "${DOCKER_REPO}:${TAG_PREFIX}-${CI_COMMIT_REF_SLUG}" \
