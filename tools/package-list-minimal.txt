@@ -19,4 +19,5 @@ ndk-bundle
 platform-tools
 platforms;android-29
 platforms;android-30
+platforms;android-31
 tools
