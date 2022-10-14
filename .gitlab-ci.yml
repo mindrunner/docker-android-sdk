@@ -14,6 +14,8 @@ before_script:
     export DOCKER_REPO=$(echo "$DOCKER_REPO" | tr '[:upper:]' '[:lower:]')
     /kaniko/executor \
       --snapshotMode=redo \
+      --verbosity=debug \
+      --single-snapshot \
       --use-new-run \
       --context "${CONTEXT}" \
       --dockerfile "${DOCKERFILE}" \
