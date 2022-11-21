@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL de.mindrunner.android-docker.flavour="alpine-lazydl"
 
-ARG GLIBC_VERSION="2.28-r0"
+ARG GLIBC_VERSION="2.35-r0"
 
 ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
@@ -33,7 +33,7 @@ RUN apk -U update && apk -U add \
   && wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub \
   && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk -O /tmp/glibc.apk \
   && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk -O /tmp/glibc-bin.apk \
-  && apk add /tmp/glibc.apk /tmp/glibc-bin.apk \
+  && apk add  --force-overwrite /tmp/glibc.apk /tmp/glibc-bin.apk \
   && rm -rf /tmp/* \
 	&& rm -rf /var/cache/apk/*
 

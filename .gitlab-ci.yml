@@ -2,6 +2,10 @@ image:
   name: gcr.io/kaniko-project/executor:debug
   entrypoint: [ "" ]
 
+cache:
+  paths:
+    - .docker-cache
+
 stages:
   - build-lazydl
   - build-standalone-1
@@ -15,6 +19,10 @@ before_script:
   - |-
     export DOCKER_REPO=$(echo "$DOCKER_REPO" | tr '[:upper:]' '[:lower:]')
     /kaniko/executor \
+      --cache=true \
+      --cache-dir "./.docker-cache" \
+      --cache-repo "${DOCKER_REPO}/cache" \
+      --compressed-caching=false \
       --snapshotMode=redo \
       --single-snapshot \
       --use-new-run \
@@ -45,14 +53,12 @@ build-alpine-lazydl:
     - *build-image
 
 build-alpine-standalone:
-  stage: build
+  stage: build-standalone-1
   variables:
     CONTEXT: ${CI_PROJECT_DIR}
     DOCKERFILE: ${CI_PROJECT_DIR}/alpine/standalone/Dockerfile
     DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "alpine-standalone"
-  dependencies:
-    - build-lazydl
   script:
     - *build-image
 
@@ -67,14 +73,12 @@ build-ubuntu-lazydl:
     - *build-image
 
 build-ubuntu-standalone:
-  stage: build-standalone-1
+  stage: build-standalone-2
   variables:
     CONTEXT: ${CI_PROJECT_DIR}
     DOCKERFILE: ${CI_PROJECT_DIR}/ubuntu/standalone/Dockerfile
     DOCKER_REPO: runmymind/docker-android-sdk
     TAG_PREFIX: "ubuntu-standalone"
-  dependencies:
-    - build-lazydl
   script:
     - *build-image
 
@@ -89,7 +93,7 @@ release-alpine-lazydl:
     - master
 
 release-alpine-standalone:
-  stage: build-standalone-2
+  stage: release
   variables:
     TAG_PREFIX: "alpine-standalone"
   script:
