@@ -36,3 +36,4 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           cache: true
           cache-repository: runmymind/docker-android-sdk/cache
+          kaniko-args: "--use-new-run"
