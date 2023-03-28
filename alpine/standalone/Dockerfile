@@ -2,7 +2,8 @@ FROM alpine:latest
 
 LABEL de.mindrunner.android-docker.flavour="alpine-standalone"
 
-ARG GLIBC_VERSION="2.35-r0"
+# Revert to 2.34 because of 2.35 issue : https://github.com/sgerrand/alpine-pkg-glibc/issues/176
+ARG GLIBC_VERSION="2.34-r0"
 
 ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
