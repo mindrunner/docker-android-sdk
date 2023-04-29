@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 LABEL de.mindrunner.android-docker.flavour="ubuntu-standalone"
 
@@ -31,7 +31,7 @@ RUN apt-get install -y \
   vim \
   openssh-client \
   locales \
-  bsdtar
+  libarchive-tools
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
