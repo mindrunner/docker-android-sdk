@@ -31,11 +31,10 @@ RUN apt-get install -y \
   vim \
   openssh-client \
   locales \
-  libarchive-tools
-
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
-RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+  libarchive-tools \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
+  && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG en_US.UTF-8
 
