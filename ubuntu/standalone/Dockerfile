@@ -25,7 +25,7 @@ RUN apt-get install -y \
   expect \
   git \
   make \
-  openjdk-11-jdk \
+  openjdk-17-jdk \
   wget \
   unzip \
   vim \
