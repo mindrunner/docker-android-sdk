@@ -24,6 +24,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
+      <a href="#announcement">Announcement</a>
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
@@ -42,6 +43,18 @@
     <li><a href="#donations">Donations</a></li>
   </ol>
 </details>
+
+
+<!-- ANNOUNCEMENT -->
+## Announcement
+### Builds
+ * The build was fully migrated from gitlab to github. We are using actions now to build and tag the images. The main image tags did not change (see below), Commit/Tag/PR image tags, however, are slightly different.
+ * Automated builds happen weekly as well as on push/merge to master.
+          
+### Major Changes
+ * JDK was upgraded from 11 to 17
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ABOUT -->
 ## About The Project
@@ -74,6 +87,7 @@ Indeed, there is a lack of documentation and it might be not really intuitive to
 
 Lazydl can also be used to download and prepare a custom list of sdk components if you only need a portion of the sdk. Just mount a volume in at runtime pointing a list named `package-list-minimal.txt` into `/opt/tools/package-list-minimal.txt` and then run `/opt/tools/entrypoint.sh built-in`. You can also use Lazydl as a base for your own custom image.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
