@@ -28,7 +28,14 @@ jobs:
             prefix=
             suffix=
           tags: |
+            type=schedule,enable=true,priority=1000,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,pattern=weekly
+            type=sha,enable=true,priority=100,prefix=${{ matrix.os }}-${{ matrix.flavor }}-sha-,suffix=,format=short
+            type=ref,enable=true,priority=600,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,event=branch
+            type=ref,enable=true,priority=600,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,event=tag
+            type=ref,enable=true,priority=600,prefix=${{ matrix.os }}-${{ matrix.flavor }}-pr-,suffix=,event=pr
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') && matrix.os == 'ubuntu' && matrix.flavor == 'standalone' }} 
+            type=raw,value=lazydl,enable=${{ github.ref == format('refs/heads/{0}', 'main') && matrix.os == 'ubuntu' && matrix.flavor == 'lazydl' }} 
+            type=raw,value=standalone,enable=${{ github.ref == format('refs/heads/{0}', 'main') && matrix.os == 'ubuntu' && matrix.flavor == 'standalone' }} 
             type=raw,value=${{ matrix.os }}-${{ matrix.flavor }},enable={{is_default_branch}}
       - uses: docker/login-action@v2
         with:
