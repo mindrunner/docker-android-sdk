@@ -20,7 +20,7 @@ jobs:
           tags: |
             type=schedule
             type=ref,event=branch
-            type=ref,event=tag
+            type=ref,event=tag                    
             type=ref,event=pr
             type=sha
             type=raw,value=latest-github-test,enable={{is_default_branch}}
@@ -36,4 +36,7 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           cache: true
           cache-repository: runmymind/docker-android-sdk/cache
-          kaniko-args: "--use-new-run"
+          kaniko-args: |
+            --use-new-run 
+            --cleanup 
+            --compressed-caching=false
