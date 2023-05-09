@@ -67,6 +67,7 @@ Use one of the following Tags: (see below)
 - alpine-lazydl
 - latest
 - lazydl
+- standalone
 
 `latest` and `lazydl` resolve to the ubuntu images
 

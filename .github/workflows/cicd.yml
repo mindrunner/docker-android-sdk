@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0/10 * * * *'
 
 jobs:
 
@@ -28,7 +28,7 @@ jobs:
             prefix=
             suffix=
           tags: |
-            type=schedule,enable=true,priority=1000,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,pattern=weekly
+            type=schedule,enable=true,priority=1000,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,pattern={{date 'YYYYMMDD'}}
             type=sha,enable=true,priority=100,prefix=${{ matrix.os }}-${{ matrix.flavor }}-sha-,suffix=,format=short
             type=ref,enable=true,priority=600,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,event=branch
             type=ref,enable=true,priority=600,prefix=${{ matrix.os }}-${{ matrix.flavor }}-,suffix=,event=tag
