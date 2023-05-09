@@ -27,6 +27,7 @@
       <a href="#announcement">Announcement</a>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#tags">Tags</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -48,8 +49,8 @@
 <!-- ANNOUNCEMENT -->
 ## Announcement
 ### Builds
- * The build was fully migrated from gitlab to github. We are using actions now to build and tag the images. The main image tags did not change (see below), Commit/Tag/PR image tags, however, are slightly different.
- * Automated builds happen weekly as well as on push/merge to master.
+ * The build pipeline was migrated to github actions. (see below for available tags)
+ * Nightly build are suffixed with the date
           
 ### Major Changes
  * JDK was upgraded from 11 to 17
@@ -58,18 +59,6 @@
 
 <!-- ABOUT -->
 ## About The Project
-
-Use one of the following Tags: (see below)
-
-- ubuntu-standalone
-- ubuntu-lazydl
-- alpine-standalone
-- alpine-lazydl
-- latest
-- lazydl
-- standalone
-
-`latest` and `lazydl` resolve to the ubuntu images
 
 ### docker-android-sdk
 This repository contains Dockerfiles to create Docker images containing the Android SDK. There are two flavors for different use cases (lazydl, standalone) and two different linux bases (ubuntu, alpine). Feel free to chose which one suits you best.
@@ -89,6 +78,23 @@ Indeed, there is a lack of documentation and it might be not really intuitive to
 Lazydl can also be used to download and prepare a custom list of sdk components if you only need a portion of the sdk. Just mount a volume in at runtime pointing a list named `package-list-minimal.txt` into `/opt/tools/package-list-minimal.txt` and then run `/opt/tools/entrypoint.sh built-in`. You can also use Lazydl as a base for your own custom image.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- TAGS -->
+### Tags
+Matrix building strategy with `os = [ ubuntu, alpine ]` and `flavor = [ lazydl, standalone ]`
+
+Use one of the following Tags: (see below)
+
+- `${os}-${flavor}`
+- `latest`
+- `${flavor}` [resolves to `ubuntu`]
+- `${os}-${flavor}-${YYYYMMDD}`
+- `${os}-${flavor}-sha-${commit_sha}`
+- `${os}-${flavor}-${branch}`
+
+See https://hub.docker.com/repository/docker/runmymind/docker-android-sdk for all available tags
+
+
 
 ### Built With
 
