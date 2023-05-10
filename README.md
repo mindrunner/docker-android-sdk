@@ -55,6 +55,9 @@
 ### Major Changes
  * JDK was upgraded from 11 to 17
 
+### 2023 Spring Cleaning
+ * https://github.com/mindrunner/docker-android-sdk/issues/92
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ABOUT -->
