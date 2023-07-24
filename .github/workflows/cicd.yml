@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         flavor: [ lazydl, standalone ]
-        os: [ ubuntu, alpine ]
+        os: [ ubuntu, alpine, devcontainer ]
     steps:
       - uses: actions/checkout@v3
       - uses: docker/metadata-action@v4
