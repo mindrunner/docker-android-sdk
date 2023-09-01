@@ -1,9 +1,9 @@
 add-ons;addon-google_apis-google-22
 add-ons;addon-google_apis-google-23
 add-ons;addon-google_apis-google-24
-build-tools;31.0.0
 build-tools;32.0.0
-build-tools;33.0.1
+build-tools;33.2.0
+build-tools;34.0.0
 cmake;3.6.4111459
 cmake;3.10.2.4988404
 docs
@@ -25,13 +25,9 @@ lldb;3.1
 ndk-bundle
 patcher;v4
 platform-tools
-platforms;android-31
 platforms;android-32
 platforms;android-33
-system-images;android-31;google_apis_playstore;x86
-system-images;android-31;google_apis_playstore;x86_64
-system-images;android-31;google_apis;x86
-system-images;android-31;google_apis;x86_64
+platforms;android-34
 system-images;android-32;google_apis_playstore;x86
 system-images;android-32;google_apis_playstore;x86_64
 system-images;android-32;google_apis;x86
@@ -40,4 +36,8 @@ system-images;android-33;google_apis_playstore;x86
 system-images;android-33;google_apis_playstore;x86_64
 system-images;android-33;google_apis;x86
 system-images;android-33;google_apis;x86_64
+system-images;android-34;google_apis_playstore;x86
+system-images;android-34;google_apis_playstore;x86_64
+system-images;android-34;google_apis;x86
+system-images;android-34;google_apis;x86_64
 tools
