@@ -9,26 +9,19 @@ ENV ANDROID_SDK /opt/android-sdk-linux
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Install required tools
-# Dependencies to execute Android builds
-
 RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   curl \
   expect \
   git \
+  libarchive-tools \
+  locales \
   make \
-  libc6:i386 \
-  libgcc1:i386 \
-  libncurses5:i386 \
-  libstdc++6:i386 \
-  zlib1g:i386 \
   openjdk-17-jdk \
-  wget \
+  openssh-client \
   unzip \
   vim \
-  openssh-client \
-  locales \
-  libarchive-tools \
+  wget \
+  zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
