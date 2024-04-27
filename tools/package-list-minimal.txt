@@ -22,3 +22,4 @@ platforms;android-32
 platforms;android-33
 platforms;android-34
 tools
+cmdline-tools
