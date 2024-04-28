@@ -2,6 +2,7 @@ build-tools;32.0.0
 build-tools;33.2.0
 build-tools;34.0.0
 cmake
+cmdline-tools
 emulator
 extras;android;gapid;3
 extras;android;m2repository
@@ -13,8 +14,8 @@ extras;google;market_apk_expansion
 extras;google;market_licensing
 extras;google;simulators
 extras;google;webdriver
-extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2
+extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
 lldb
 ndk-bundle
 platform-tools
@@ -22,4 +23,3 @@ platforms;android-32
 platforms;android-33
 platforms;android-34
 tools
-cmdline-tools
