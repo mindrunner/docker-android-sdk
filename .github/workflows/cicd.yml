@@ -18,8 +18,8 @@ jobs:
         flavor: [ lazydl, standalone ]
         os: [ ubuntu, alpine ]
     steps:
-      - uses: actions/checkout@v3
-      - uses: docker/metadata-action@v4
+      - uses: actions/checkout@v4
+      - uses: docker/metadata-action@v5
         id: metadata
         with:
           images: runmymind/docker-android-sdk
@@ -37,7 +37,7 @@ jobs:
             type=raw,value=lazydl,enable=${{ github.ref == format('refs/heads/{0}', 'main') && matrix.os == 'ubuntu' && matrix.flavor == 'lazydl' }} 
             type=raw,value=standalone,enable=${{ github.ref == format('refs/heads/{0}', 'main') && matrix.os == 'ubuntu' && matrix.flavor == 'standalone' }} 
             type=raw,value=${{ matrix.os }}-${{ matrix.flavor }},enable={{is_default_branch}}
-      - uses: docker/login-action@v2
+      - uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
