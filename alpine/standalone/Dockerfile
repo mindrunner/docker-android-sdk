@@ -11,7 +11,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
 ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk
 
-ENV PATH $PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin/:$ANDROID_HOME/build-tools/34.0.0/:$ANDROID_HOME/emulator/:$ANDROID_HOME/bin
+ENV PATH $PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin/:$ANDROID_HOME/build-tools/34.0.0/:$ANDROID_HOME/emulator/:$ANDROID_HOME/bin:/opt/tools
 
 # Install Required Tools
 RUN apk -U update && apk -U add \

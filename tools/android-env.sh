@@ -5,6 +5,8 @@ export ANDROID_SDK_ROOT=${ANDROID_HOME}
 export ANDROID_SDK_HOME=${ANDROID_HOME}
 export ANDROID_SDK=${ANDROID_HOME}
 
+export PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/bin:
+
 if [[ ! -z "$http_proxy" ]] || [[ ! -z "$https_proxy" ]]; then
     export JAVA_OPTS="-Djava.net.useSystemProxies=true $JAVA_OPTS -Dhttp.noProxyHosts=${no_proxy}"
     # This only works if there is a proxy listening on docker host machine and
