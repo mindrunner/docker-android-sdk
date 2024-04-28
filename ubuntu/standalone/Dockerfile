@@ -7,6 +7,8 @@ ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
 
+ENV PATH $PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin/:$ANDROID_HOME/build-tools/34.0.0/:$ANDROID_HOME/emulator/:$ANDROID_HOME/bin
+
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
@@ -36,6 +38,6 @@ COPY licenses /opt/licenses
 
 WORKDIR /opt/android-sdk-linux
 
-RUN /opt/tools/entrypoint.sh built-in
+RUN entrypoint.sh built-in
 
-CMD /opt/tools/entrypoint.sh built-in
+CMD entrypoint.sh built-in

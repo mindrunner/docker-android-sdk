@@ -11,6 +11,8 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
 ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk
 
+ENV PATH $PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin/:$ANDROID_HOME/build-tools/34.0.0/:$ANDROID_HOME/emulator/:$ANDROID_HOME/bin
+
 # Install Required Tools
 RUN apk -U update && apk -U add \
   bash \
@@ -53,4 +55,4 @@ COPY licenses /opt/licenses
 # Working Directory
 WORKDIR /opt/android-sdk-linux
 
-CMD /opt/tools/entrypoint.sh lazy-dl
+CMD entrypoint.sh lazy-dl
