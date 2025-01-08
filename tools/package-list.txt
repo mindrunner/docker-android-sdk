@@ -28,6 +28,7 @@ platform-tools
 platforms;android-32
 platforms;android-33
 platforms;android-34
+platforms;android-35
 system-images;android-32;google_apis;x86
 system-images;android-32;google_apis;x86_64
 system-images;android-32;google_apis_playstore;x86
