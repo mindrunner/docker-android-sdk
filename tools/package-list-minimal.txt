@@ -1,6 +1,7 @@
 build-tools;32.0.0
 build-tools;33.0.2
 build-tools;34.0.0
+build-tools;35.0.0
 cmake
 emulator
 extras;android;gapid;3
