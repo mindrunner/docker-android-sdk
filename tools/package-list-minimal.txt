@@ -18,7 +18,7 @@ extras;google;webdriver
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2
 extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
 lldb
-ndk-bundle
+ndk;28.2.13676358
 platform-tools
 platforms;android-32
 platforms;android-33
